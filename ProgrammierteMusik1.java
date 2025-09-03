@@ -727,9 +727,10 @@ class ProgrammierteMusik1 {
     void piece475Unfinished() throws Exception {
         addMetaTextEvent("April 2006, reworked September 2025. Decreasing velocity.");
 
+        Random random = new Random(0);
         int[] melody = new int[25];
         for (int n = 0; n < melody.length; n++) {
-            melody[n] = 30 + (int) (Math.random() * 60);
+            melody[n] = 30 + (int) (random.nextDouble() * 60);
         }
 
         velocity(melody, 10, sixtyFourthTicks(), wholeTicks());

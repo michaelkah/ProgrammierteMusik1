@@ -12,7 +12,7 @@ import static javax.sound.midi.ShortMessage.NOTE_ON;
     My first collection of "Programmierte Musik",
     available both as Java source code as well as midi files.
 
-    todo Piece names are random 9 digit numbers. Really?
+    Piece names are random 3 digit numbers.
 
     Usage: run the main method in this class, this will (re-)generate the midi files.
  */
@@ -355,7 +355,7 @@ class ProgrammierteMusik1 {
      * Pieces
      */
 
-    void pieceMarbleMadness() throws Exception {
+    void piece217() throws Exception {
         addMetaTextEvent("March 2007, reworked September 2025. Inspired by Marble Madness.");
 
         long durationHigh = dotted(sixteenthTicks());
@@ -376,7 +376,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceDeutschesMuseum1Unfinished() throws Exception {
+    void piece945Unfinished() throws Exception {
         addMetaTextEvent("March 2007, reworked September 2025. Conceived during a trip to the Deutsches Museum.");
 
         int key = A3;
@@ -405,7 +405,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceDeutschesMuseum2Unfinished() throws Exception {
+    void piece668Unfinished() throws Exception {
         addMetaTextEvent("March 2007, reworked September 2025. Conceived during a trip to the Deutsches Museum.");
 
         int key = A3;
@@ -433,7 +433,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceDeutschesMuseum3Unfinished() throws Exception {
+    void piece346Unfinished() throws Exception {
         addMetaTextEvent("March 2007, reworked September 2025. Conceived during a trip to the Deutsches Museum.");
 
         // reduce the duration of the ladder so that ladder overall duration is always one note
@@ -471,10 +471,10 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceRandom2a() throws Exception {
+    void piece644() throws Exception {
         addMetaTextEvent("September 2006, reworked September 2025. Random notes.");
 
-        random2(1, 2, 100, F3, E4, new long[]
+        randomNotes(1, 2, 100, F3, E4, new long[]
                 {
                         dotted(halfTicks()), halfTicks(),
                         dotted(quarterTicks()), quarterTicks(),
@@ -482,10 +482,10 @@ class ProgrammierteMusik1 {
                 });
     }
 
-    void pieceRandom2b() throws Exception {
+    void piece318() throws Exception {
         addMetaTextEvent("September 2006, reworked September 2025. Random notes.");
 
-        random2(1, 2, 200, F2, E5, new long[]
+        randomNotes(1, 2, 200, F2, E5, new long[]
                 {
                         quarterTicks(),
                         eighthTicks(),
@@ -493,17 +493,17 @@ class ProgrammierteMusik1 {
                 });
     }
 
-    void pieceRandom2c() throws Exception {
+    void piece433() throws Exception {
         addMetaTextEvent("September 2006, reworked September 2025. Random notes.");
 
-        random2(1, 2, 1000, A4, G5, new long[]
+        randomNotes(1, 2, 1000, A4, G5, new long[]
                 {
                         dotted(halfTicks()), halfTicks(),
                         dotted(quarterTicks()), quarterTicks(),
                         dotted(eighthTicks()), eighthTicks()
                 });
 
-        random2(2, 1, 1000, A1, G2, new long[]
+        randomNotes(2, 1, 1000, A1, G2, new long[]
                 {
                         dotted(halfTicks()), halfTicks(),
                         dotted(quarterTicks()), quarterTicks(),
@@ -511,7 +511,7 @@ class ProgrammierteMusik1 {
                 });
     }
 
-    void random2(int keySeed, int durationSeed, int notes, int lowestNote, int highestNote, long[] durations) throws Exception {
+    void randomNotes(int keySeed, int durationSeed, int notes, int lowestNote, int highestNote, long[] durations) throws Exception {
         Random keyRandom = new Random(keySeed);
         Random durationRandom = new Random(durationSeed);
 
@@ -525,7 +525,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void piecePi() throws Exception {
+    void piece745() throws Exception {
         addMetaTextEvent("August 2006, reworked September 2025. 314 Digits of Pi.");
 
         int[] piDigits = {
@@ -552,7 +552,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceWall() throws Exception {
+    void piece671() throws Exception {
         addMetaTextEvent("August 2006, reworked September 2025. Inspired by a wall of sound.");
 
         long overallDuration = 8 * longaTicks();
@@ -584,7 +584,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceInverseWall() throws Exception {
+    void piece447() throws Exception {
         addMetaTextEvent("September 2025. Inspired by a wall of sound.");
 
         long overallDuration = 8 * longaTicks();
@@ -616,7 +616,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceEighth() throws Exception {
+    void piece598() throws Exception {
         addMetaTextEvent("August 2006, reworked September 2025. Eighth notes.");
 
         int notes = 192;
@@ -626,7 +626,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceLonga() throws Exception {
+    void piece936() throws Exception {
         addMetaTextEvent("August 2006, reworked September 2025. Longa notes.");
 
         int notes = 12;
@@ -636,7 +636,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceTwoSteps() throws Exception {
+    void piece879() throws Exception {
         addMetaTextEvent("August 2006, reworked September 2025. Inspired by a pendulum wave.");
 
         long step1 = quarterTicks();
@@ -666,7 +666,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceCrossingSequences() throws Exception {
+    void piece253() throws Exception {
         addMetaTextEvent("April 2006, reworked September 2025. Crossing sequences.");
 
         int start = C0;
@@ -687,7 +687,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void piecePassages1() throws Exception {
+    void piece744() throws Exception {
         addMetaTextEvent("April 2006, reworked September 2025. Passages.");
 
         passages(E1, FIS5, new long[]{wholeTicks(),
@@ -701,7 +701,7 @@ class ProgrammierteMusik1 {
                 dotted(twoHundredFiftySixthTicks()), twoHundredFiftySixthTicks()});
     }
 
-    void piecePassages2() throws Exception {
+    void piece972() throws Exception {
         newPiece(128);
         addMetaTextEvent("April 2006, reworked September 2025. Passages.");
 
@@ -722,7 +722,7 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void pieceVelocityUnfinished() throws Exception {
+    void piece475Unfinished() throws Exception {
         addMetaTextEvent("April 2006, reworked September 2025. Decreasing velocity.");
 
         int[] melody = new int[25];

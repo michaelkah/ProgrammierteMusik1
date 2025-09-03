@@ -187,8 +187,8 @@ class ProgrammierteMusik1 {
      * Note Length Methods
      */
 
-    static long naturalize(long averageValue, long maximumDeviation) {
-        return Math.round(averageValue + maximumDeviation * (Math.random() * 2.0 - 1.0));
+    static long naturalize(Random random, long averageValue, long maximumDeviation) {
+        return Math.round(averageValue + maximumDeviation * (random.nextDouble() * 2.0 - 1.0));
     }
 
     long dotted(long ticks) {
@@ -677,8 +677,10 @@ class ProgrammierteMusik1 {
 
         long tick = 1;
 
+        Random random = new Random(0);
+
         for (int n = start; n <= end; n++) {
-            long duration = naturalize(averageDuration, maximumDeviation);
+            long duration = naturalize(random, averageDuration, maximumDeviation);
 
             note(n, tick, duration);
             note(start + end - n, tick, duration);

@@ -382,7 +382,6 @@ class ProgrammierteMusik1 {
         int initialKey = A3;
         int endKey = F4;
         long duration = dotted(quarterTicks());
-
         long tick = 1;
 
         for (int currentEndKey = initialKey; currentEndKey <= endKey; currentEndKey++) {
@@ -403,68 +402,25 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void piece668Unfinished() throws Exception {
+    void piece346() throws Exception {
         addMetaTextEvent("March 2007, reworked September 2025. Conceived during a trip to the Deutsches Museum.");
 
-        int key = A3;
-        long duration = dotted(quarterTicks());
-
-        int notes = 12;
-
-        int interval = (notes - 1) * 2;
+        int initialKey = A3;
+        int endKey = A4;
+        long duration = breveTicks();
         long tick = 1;
 
-        for (int n = 1; n <= notes; n++) {
-            int note = n % notes;
+        for (int currentEndKey = initialKey; currentEndKey <= endKey; currentEndKey++) {
+            long currentDuration = duration / (2L * (currentEndKey - initialKey) + 1);
 
-            for (int m = 0; m < interval; m++) {
-                note(key, tick += duration, duration);
+            for (int key = initialKey; key < currentEndKey; key++) {
+                note(key, tick, currentDuration);
+                tick += currentDuration;
             }
 
-            for (int m = 1; m < note; m++) {
-                note(key + m, tick += duration, duration);
-            }
-
-            for (int m = note; m > 0; m--) {
-                note(key + m, tick += duration, duration);
-            }
-        }
-    }
-
-    void piece346Unfinished() throws Exception {
-        addMetaTextEvent("March 2007, reworked September 2025. Conceived during a trip to the Deutsches Museum.");
-
-        // reduce the duration of the ladder so that ladder overall duration is always one note
-        int key = A3;
-        long duration = dotted(quarterTicks());
-
-        long ladderDuration = duration;
-
-        int notes = 12;
-
-        int interval = notes - 1;
-        long tick = 1;
-
-        for (int n = 1; n <= notes; n++) {
-            int note = n % notes;
-
-            for (int m = 0; m < interval; m++) {
-                note(key, tick += duration, duration);
-            }
-
-            for (int m = 1; m < note; m++) {
-                note(key + m, tick += ladderDuration, ladderDuration);
-            }
-
-            // use channels here
-            for (int m = note; m > 0; m--) {
-                note(key + m, tick += ladderDuration, ladderDuration);
-            }
-
-            note(key, tick += ladderDuration, duration);
-
-            if (ladderDuration >= thirtySecondTicks()) {
-                ladderDuration /= 2;
+            for (int key = currentEndKey; key >= initialKey; key--) {
+                note(key, tick, currentDuration);
+                tick += currentDuration;
             }
         }
     }

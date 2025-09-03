@@ -724,33 +724,52 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void piece475Unfinished() throws Exception {
-        addMetaTextEvent("April 2006, reworked September 2025. Decreasing velocity.");
+    void piece475() throws Exception {
+        addMetaTextEvent("April 2006, reworked September 2025. Sweeping velocity increase.");
 
-        Random random = new Random(0);
-        int[] melody = new int[25];
+        Random random = new Random(1);
+        int[] melody = new int[8];
         for (int n = 0; n < melody.length; n++) {
-            melody[n] = 30 + (int) (random.nextDouble() * 60);
+            melody[n] = A4 + random.nextInt(GIS5 - A4 + 1);
         }
 
-        velocity(melody, 10, sixtyFourthTicks(), wholeTicks());
-        //	velocity(melody, 50, 128 * 4 / 64, 128);
+        sweepingVelocity(melody, 8, wholeTicks(), sixtyFourthTicks());
     }
 
-    void velocity(int[] melody,
-                  int loops,
-                  long startDuration,
-                  long stopDuration)
+    void sweepingVelocity(int[] melody,
+                          int loops,
+                          long startDuration,
+                          long stopDuration)
             throws Exception {
         int steps = melody.length * loops;
         long tick = 1;
 
         for (int n = 0; n < steps; n++) {
             int key = melody[n % melody.length];
-            long step = (stopDuration - startDuration) * n / steps + startDuration;
-            tick += step;
+            long duration = startDuration + (((stopDuration - startDuration) * n) / steps);
+            note(key, tick, duration);
+            tick += duration;
+        }
+    }
 
-            note(key, 1 + tick, step);
+    void piece808() throws Exception {
+        addMetaTextEvent("September 2025. Fixed velocity increase.");
+
+        Random random = new Random(1);
+        int[] melody = new int[8];
+        for (int n = 0; n < melody.length; n++) {
+            melody[n] = A4 + random.nextInt(GIS5 - A4 + 1);
+        }
+
+        long tick = 1;
+        long duration = wholeTicks();
+
+        for (int m = 0; m < 10; m++) {
+            for (int key : melody) {
+                note(key, tick, duration);
+                tick += duration;
+            }
+            duration = duration * 2 / 3;
         }
     }
 }

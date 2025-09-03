@@ -376,31 +376,29 @@ class ProgrammierteMusik1 {
         }
     }
 
-    void piece945Unfinished() throws Exception {
+    void piece945() throws Exception {
         addMetaTextEvent("March 2007, reworked September 2025. Conceived during a trip to the Deutsches Museum.");
 
-        int key = A3;
+        int initialKey = A3;
+        int endKey = F4;
         long duration = dotted(quarterTicks());
 
-        int notes = 12;
-
-        int interval = (notes - 1) * 2;
         long tick = 1;
 
-        for (int n = 1; n <= notes; n++) {
-            int note = n % notes;
-            int start = interval - (note * 2);
-
-            for (int m = 0; m < start; m++) {
-                note(key, tick += duration, duration);
+        for (int currentEndKey = initialKey; currentEndKey <= endKey; currentEndKey++) {
+            for (int n = 0; n < 2 * (endKey - currentEndKey); n++) {
+                note(initialKey, tick, duration);
+                tick += duration;
             }
 
-            for (int m = 0; m < note; m++) {
-                note(key + m, tick += duration, duration);
+            for (int key = initialKey; key < currentEndKey; key++) {
+                note(key, tick, duration);
+                tick += duration;
             }
 
-            for (int m = note; m > 0; m--) {
-                note(key + m, tick += duration, duration);
+            for (int key = currentEndKey; key >= initialKey; key--) {
+                note(key, tick, duration);
+                tick += duration;
             }
         }
     }
